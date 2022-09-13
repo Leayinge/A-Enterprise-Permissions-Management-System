@@ -136,13 +136,14 @@
         <!-- 内容头部 -->
         <section class="content-header">
             <h1>
-                数据管理
-                <small>数据列表</small>
+                系统操作
+                <small>访问日志</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
-                <li><a href="#">数据管理</a></li>
-                <li class="active">数据列表</li>
+                <li><a href="${pageContext.request.contextPath}/pages/main.jsp"><i class="fa fa-dashboard"></i> 首页</a>
+                </li>
+                <li><a href="#">系统操作</a></li>
+                <li class="active">访问日志</li>
             </ol>
         </section>
         <!-- 内容头部 /-->
@@ -153,7 +154,7 @@
             <!-- .box-body -->
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">列表</h3>
+                    <h3 class="box-title">日志列表</h3>
                 </div>
 
                 <div class="box-body">
@@ -165,22 +166,24 @@
                         <div class="pull-left">
                             <div class="form-group form-inline">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-default" title="新建"
-                                            onclick="location.href='${pageContext.request.contextPath}/pages/users-add.jsp'">
-                                        <i
-                                                class="fa fa-file-o"></i> 新建
-                                    </button>
-                                    <button type="button" class="btn btn-default" title="删除"><i
-                                            class="fa fa-trash-o"></i> 删除
-                                    </button>
-                                    <button type="button" class="btn btn-default" title="开启"><i
-                                            class="fa fa-check"></i> 开启
-                                    </button>
-                                    <button type="button" class="btn btn-default" title="屏蔽"><i class="fa fa-ban"></i>
-                                        屏蔽
-                                    </button>
+                                    <%--                                    <button type="button" class="btn btn-default" title="新建"--%>
+                                    <%--                                            onclick="location.href='${pageContext.request.contextPath}/pages/users-add.jsp'">--%>
+                                    <%--                                        <i--%>
+                                    <%--                                                class="fa fa-file-o"></i> 新建--%>
+                                    <%--                                    </button>--%>
+                                    <%--                                    <button type="button" class="btn btn-default" title="删除"><i--%>
+                                    <%--                                            class="fa fa-trash-o"></i> 删除--%>
+                                    <%--                                    </button>--%>
+                                    <%--                                    <button type="button" class="btn btn-default" title="开启"><i--%>
+                                    <%--                                            class="fa fa-check"></i> 开启--%>
+                                    <%--                                    </button>--%>
+                                    <%--                                    <button type="button" class="btn btn-default" title="屏蔽"><i class="fa fa-ban"></i>--%>
+                                    <%--                                        屏蔽--%>
+                                    <%--                                    </button>--%>
                                     <button type="button" class="btn btn-default" title="刷新"><i
-                                            class="fa fa-refresh"></i> 刷新
+                                            class="fa fa-refresh"
+                                            onclick="location.href='${pageContext.request.contextPath}/log/findAll.do'"></i>
+                                        刷新
                                     </button>
                                 </div>
                             </div>

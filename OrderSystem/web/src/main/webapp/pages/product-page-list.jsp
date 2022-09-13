@@ -136,13 +136,13 @@
         <!-- 内容头部 -->
         <section class="content-header">
             <h1>
-                数据管理
-                <small>数据列表</small>
+                基础数据
+                <small>商品管理</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
-                <li><a href="#">数据管理</a></li>
-                <li class="active">数据列表</li>
+                <li><a href="${pageContext.request.contextPath}/pages/main.jsp"><i class="fa fa-dashboard"></i> 首页</a></li>
+                <li><a href="#">基础数据</a></li>
+                <li class="active">商品管理</li>
             </ol>
         </section>
         <!-- 内容头部 /-->
@@ -153,7 +153,7 @@
             <!-- .box-body -->
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">列表</h3>
+                    <h3 class="box-title">商品列表</h3>
                 </div>
 
                 <div class="box-body">
@@ -225,11 +225,11 @@
                                     <td>${product.productPrice}</td>
                                     <td class="text-center">${product.productDesc}</td>
                                     <td class="text-center">${product.productStatusStr}</td>
-                                    <td class="text-center">
-                                        <button type="button" class="btn bg-olive btn-xs">订单</button>
-                                        <button type="button" class="btn bg-olive btn-xs">详情</button>
-                                        <button type="button" class="btn bg-olive btn-xs">编辑</button>
-                                    </td>
+<%--                                    <td class="text-center">--%>
+<%--                                        <button type="button" class="btn bg-olive btn-xs">订单</button>--%>
+<%--                                        <button type="button" class="btn bg-olive btn-xs">详情</button>--%>
+<%--                                        <button type="button" class="btn bg-olive btn-xs">编辑</button>--%>
+<%--                                    </td>--%>
                                 </tr>
                             </c:forEach>
 

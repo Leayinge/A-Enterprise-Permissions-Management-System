@@ -136,13 +136,13 @@
         <!-- 内容头部 -->
         <section class="content-header">
             <h1>
-                数据管理
-                <small>数据列表</small>
+                系统操作
+                <small>资源权限管理</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
-                <li><a href="#">数据管理</a></li>
-                <li class="active">数据列表</li>
+                <li><a href="${pageContext.request.contextPath}/pages/main.jsp"><i class="fa fa-dashboard"></i> 首页</a></li>
+                <li><a href="#">系统操作</a></li>
+                <li class="active">资源权限管理</li>
             </ol>
         </section>
         <!-- 内容头部 /-->
@@ -153,7 +153,7 @@
             <!-- .box-body -->
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">列表</h3>
+                    <h3 class="box-title">资源权限列表</h3>
                 </div>
 
                 <div class="box-body">
@@ -216,13 +216,13 @@
                                     <td>${permission.permissionId}</td>
                                     <td>${permission.permissionName}</td>
                                     <td>${permission.url}</td>
-                                    <td class="text-center">
-                                        <button type="button" class="btn bg-olive btn-xs"
-                                                onclick="location.href='${pageContext.request.contextPath}/users/findbyid.do?id=${users.userId}'">
-                                            详情
-                                        </button>
-                                        <button type="button" class="btn bg-olive btn-xs">添加角色</button>
-                                    </td>
+<%--                                    <td class="text-center">--%>
+<%--                                        <button type="button" class="btn bg-olive btn-xs"--%>
+<%--                                                onclick="location.href='${pageContext.request.contextPath}/users/findbyid.do?id=${users.userId}'">--%>
+<%--                                            详情--%>
+<%--                                        </button>--%>
+<%--                                        <button type="button" class="btn bg-olive btn-xs">添加角色</button>--%>
+<%--                                    </td>--%>
                                 </tr>
                             </c:forEach>
 

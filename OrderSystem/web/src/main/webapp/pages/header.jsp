@@ -237,7 +237,7 @@
 
                             <p>
                                 <security:authentication property="principal.username"></security:authentication>
-                                <small>最后登录 11:20AM</small>
+<%--                                <small>最后登录 11:20AM</small>--%>
                             </p>
                         </li>
                         <!-- Menu Body
@@ -256,9 +256,9 @@
                 </li>-->
                         <!-- Menu Footer-->
                         <li class="user-footer">
-                            <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">修改密码</a>
-                            </div>
+<%--                            <div class="pull-left">--%>
+                            <%--                                <a href="#" class="btn btn-default btn-flat">修改密码</a>--%>
+                            <%--                            </div>--%>
                             <div class="pull-right">
                                 <a href="${pageContext.request.contextPath}/logout.do" class="btn btn-default btn-flat">注销</a>
                             </div>

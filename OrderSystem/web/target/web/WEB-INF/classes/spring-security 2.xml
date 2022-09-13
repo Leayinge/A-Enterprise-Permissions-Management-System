@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security.xsd">
+
+
+    <!-- 配置不拦截的资源，不拦截登陆、登陆失败、some前端文件，为了可以显示 -->
+    <security:http pattern="/pages/login.jsp" security="none"/>
+    <security:http pattern="/pages/failure.jsp" security="none"/>
+    <security:http pattern="/pages/default.jsp" security="none"/>
+    <security:http pattern="/pages/footer.jsp" security="none"/>
+    <security:http pattern="/pages/header.jsp" security="none"/>
+    <security:http pattern="/pages/aside.jsp" security="none"/>
+    <security:http pattern="/pages/css/**" security="none"/>
+    <security:http pattern="/pages/img/**" security="none"/>
+    <security:http pattern="/pages/plugins/**" security="none"/>
+    <!--
+    	配置具体的规则
+    	auto-config="true"	不用自己编写登录的页面，框架提供默认登录页面
+    	use-expressions="false"	是否使用SPEL表达式（没学习过）
+    -->
+    <security:http auto-config="true" use-expressions="true">
+        <!-- intercept-url定义过滤规则 -->
+        <!-- 配置具体的拦截的规则 pattern="请求路径的规则，指的是对哪些url进行权限控制" access="访问系统的人，必须有ROLE_USER的角色，表示请求对应的URL需要什么权限" -->
+        <!-- access是个逗号分隔的角色列表，只需要拥有其中一个，就可以访问对应URL-->
+        <!-- /**指的是所有资源-->
+        <security:intercept-url pattern="/**"
+                                access="hasAnyRole('ROLE_ADMIN','ROLE_LEAYINGE','ROLE_TEST','ROLE_GUESS','ROLE_USER')"/>
+
+        <!-- 定义跳转的具体的页面 -->
+        <!-- failure指的是校验失败，如果是没有权限则会去default，如果校验成功去success -->
+        <security:form-login
+                login-page="/pages/login.jsp"
+                password-parameter="password"
+                username-parameter="username"
+                login-processing-url="/login.do"
+                default-target-url="/pages/default.jsp"
+                authentication-failure-url="/pages/failure.jsp"
+                authentication-success-forward-url="/pages/main.jsp"/>
+
+        <!-- 默认开启，关闭跨域（服务器）请求 -->
+        <security:csrf disabled="true"/>
+        <!-- 退出 -->
+        <security:logout invalidate-session="true" logout-url="/logout.do" logout-success-url="/login.jsp"/>
+
+    </security:http>
+
+    <!-- 切换成数据库中的用户名和密码 -->
+    <security:authentication-manager>
+        <security:authentication-provider user-service-ref="usersService">
+            <!-- 配置加密的方式-->
+            <!--            <security:password-encoder ref="passwordEncoder"/>-->
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <!-- 配置加密类   用来对用户密码进行加密，在userService中加密-->
+    <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+
+    <!-- 提供了入门的方式，在内存中存入用户名和密码,真实开发用的是数据库的数据 -->
+    <!-- 就像创建了两个用户，指定了用户名，密码，角色 -->
+    <!--    <security:authentication-manager>-->
+    <!--        <security:authentication-provider>-->
+    <!--            <security:user-service>-->
+    <!--                <security:user name="admin" password="{noop}admin" authorities="ROLE_USER"/>-->
+    <!--                <security:user name="user" password="{noop}user" authorities="ROLE_ADMIN"/>-->
+    <!--            </security:user-service>-->
+    <!--        </security:authentication-provider>-->
+    <!--    </security:authentication-manager>-->
+
+    <!--开启权限注解-->
+    <!--jsr250可以省略ROLE_前缀，secured是spring security原生注解，最后一个是spel表达式，功能更强-->
+    <security:global-method-security pre-post-annotations="enabled" jsr250-annotations="enabled"
+                                     secured-annotations="enabled"></security:global-method-security>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
